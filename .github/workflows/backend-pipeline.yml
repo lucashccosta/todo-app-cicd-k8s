@@ -17,13 +17,9 @@ jobs:
           node-version: '18.x'
 
       - name: Install dependencies
-        with:
-          context: ./backend
-        run: npm install 
+        run: npm install ./backend
 
       - name: Run tests
-        with:
-          context: ./backend
         run: npm run test
 
       - name: Docker login
