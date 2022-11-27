@@ -5,7 +5,11 @@ name = "javascript"
 enabled = true
 
     [analyzers.meta]
+    dependency_file_paths = [
+        "backend/"
+    ]
     environment = [
         "nodejs",
         "jest"
     ]
+    module_system = "commonjs"
