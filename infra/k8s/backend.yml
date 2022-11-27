@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: todo
+        tier: backend
+    spec:
+      containers:
+        - name: todo
+          image: lucashccosta/todo-app-cicd-k8s:latest
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: 500m
+          ports:
+            - containerPort: 3020
+          env:
+            - name: APP_ENVIRONMENT
+              value: production
+            - name: APP_PORT
+              value: "3020"
+          imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo
+spec:
+  selector:
+    app: todo
+    tier: backend
+  ports:
+    - port: 3020
+      targetPort: 3020
+  type: LoadBalancer
