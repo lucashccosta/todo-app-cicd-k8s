@@ -20,7 +20,7 @@ jobs:
         run: npm install ./backend
 
       - name: Run tests
-        run: npm run test
+        run: npm run --prefix ./backend test
 
       - name: Docker login
         uses: docker/login-action@v2.1.0
