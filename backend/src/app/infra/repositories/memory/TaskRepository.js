@@ -26,7 +26,7 @@ class TaskRepository
 
     remove(uuid)
     {
-        this.tasks = this.tasks.filter(task => task.uuid != uuid);
+        this.tasks = this.tasks.filter(task => task.uuid !== uuid);
     }
 }
 

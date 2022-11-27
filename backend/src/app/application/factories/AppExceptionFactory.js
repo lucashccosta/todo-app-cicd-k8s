@@ -1,5 +1,3 @@
-const AppException = require('../exceptions/AppException');
-
 class AppExceptionFactory
 {
     static create(error)

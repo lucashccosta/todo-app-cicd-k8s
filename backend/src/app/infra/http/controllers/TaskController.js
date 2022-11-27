@@ -1,13 +1,11 @@
 const HttpStatusCode = require('../../../application/enums/HttpStatusCode');
 const UseCaseFactory = require('../../../application/factories/UseCaseFactory');
-const TaskService = require('../../../application/services/TaskService');
-const TaskRepository = require('../../repositories/memory/TaskRepository');
 
 class TaskController
 {
     static index(req, res)
     {
-        let tasks = (UseCaseFactory.createListTasksUseCase()).handle();
+        const tasks = (UseCaseFactory.createListTasksUseCase()).handle();
 
         return res.status(HttpStatusCode.OK).json(tasks);
     } 
